@@ -12,7 +12,7 @@ See [godoc](http://godoc.org/github.com/kelseyhightower/envconfig)
 
 ## Usage
 
-Set some environment variables:
+Set some environment variables (or define it in a `.env` file):
 
 ```Bash
 export MYAPP_DEBUG=false
@@ -50,6 +50,10 @@ type Specification struct {
 func main() {
     var s Specification
     err := envconfig.Process("myapp", &s)
+
+    // if reading from a .env file
+    // err := envoconfig.ProcessFromFile("/fully/qualified/path/to/.env", "myapp", &s)
+
     if err != nil {
         log.Fatal(err.Error())
     }
